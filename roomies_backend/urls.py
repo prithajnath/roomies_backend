@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.authtoken import views as rest_framework_views
+from roomies import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^get_profile', views.ProfileStuff.as_view())
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
