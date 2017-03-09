@@ -23,7 +23,8 @@ from roomies import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^get_profile', views.ProfileStuff.as_view()),
-    url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token')
+    url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
+    url(r'sign_up', views.SignUp.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
