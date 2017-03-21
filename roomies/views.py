@@ -18,12 +18,12 @@ class ProfileStuff(APIView):
 @permission_classes((AllowAny, ))      
 class SignUp(APIView):
     def post(self,request):
-        username = request.POST['username']
+        username = request.POST.get("username")
         if User.objects.filter(username=username):
             return Response({'error':'username already taken'})
         else:
-            password = request.POST['password']
-            email = request.POST['email']
+            password = request.POST.get("password")
+            email = request.POST.get("email")
             user = User.objects.create_user(username,email,password)
             user.save()
             idx = User.objects.get(username=user.get_username()).pk
