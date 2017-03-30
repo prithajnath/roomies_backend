@@ -1,5 +1,7 @@
 from django.contrib import admin
-from myproject.myapp.models import UserProfile
+from roomies.models import UserProfile
 # Register your models here.
 
-admin.site.register(UserProfile)
+class ProfilepicAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(UserProfile, ProfilepicAdmin)
