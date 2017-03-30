@@ -16,5 +16,3 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class UserProfile(models.Model):
     user   = models.OneToOneField(User)
     avatar = models.ImageField()
-    
-admin.site.register(UserProfile)
