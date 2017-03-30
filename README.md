@@ -1,7 +1,7 @@
 # roomies_backend
 Main backend for roomies
 
-##API Endpoints
+## API Endpoints
 * `get_auth_token` : Returns a token when passed a valid username and password
 
 ```
@@ -23,5 +23,5 @@ curl --data "username=${USERNAME}&password=${PASSWORD}&email=${EMAIL}" https://r
 
 ```
 
-##URL 
+## URL 
 https://roomies-backend-prithajnath.c9users.io/
