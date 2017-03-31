@@ -42,11 +42,14 @@ class GetMatches(APIView):
     def get(self,request):
         user = request.user
         users = User.objects.all()
-        matches = []
+        matches = {}
         for i in users:
             if i!=user:
-                matches.append(i.get_username())
-        return Response({"matches":matches})
+                try:
+                    matches[i.get_username()] = UserProfile.objects.get(user_id=i.pk).avatar.url
+                except:
+                    matches[i.get_username()] = ""
+        return Response(matches)
         
 class GetMatchProfile(APIView):
     def get(self,request):
