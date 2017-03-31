@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
     url(r'sign_up', views.SignUp.as_view()),
     url(r'profile_pic', views.ProfilePicture.as_view()),
-    url(r'get_matches', views.GetMatches.as_view())
+    url(r'get_matches', views.GetMatches.as_view()),
+    url(r'get_match_profile', views.GetMatchProfile.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -47,3 +47,9 @@ class GetMatches(APIView):
             if i!=user:
                 matches.append(i.get_username())
         return Response({"matches":matches})
+        
+class GetMatchProfile(APIView):
+    def get(self,request):
+        username = request.GET.get("username")
+        user = User.objects.get(username=username)
+        return Response(ProfileSerializer(user).data)
