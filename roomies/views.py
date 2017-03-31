@@ -38,5 +38,12 @@ class ProfilePicture(APIView):
         profile = UserProfile.objects.get(user_id=idx)
         return Response({'url':'https://roomies-backend-prithajnath.c9users.io'+profile.avatar.url})
         
-        
-        
+class GetMatches(APIView):
+    def get(self,request):
+        user = request.user
+        users = User.objects.all()
+        matches = []
+        for i in users:
+            if i!=user:
+                matches.append(i.get_username())
+        return Response({"matches":matches})

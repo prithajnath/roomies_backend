@@ -30,5 +30,15 @@ curl -X GET https://roomies-backend-prithajnath.c9users.io/profile_pic -H 'Autho
 
 ```
 
+* `get_matches` : Returns a list of matches for a given user
+
+```
+curl -X GET https://roomies-backend-prithajnath.c9users.io/get_matches -H 'Authorization: Token 4ed1b13f2fd75122ea4cfa1b9f986231dc815f1d'
+
+```
+
+
+
+
 ## URL 
 https://roomies-backend-prithajnath.c9users.io/
