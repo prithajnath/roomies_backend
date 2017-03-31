@@ -18,13 +18,22 @@ from django.conf.urls import url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken import views as rest_framework_views
+from django.conf import settings
+from django.conf.urls.static import static
 from roomies import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^get_profile', views.ProfileStuff.as_view()),
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
-    url(r'sign_up', views.SignUp.as_view())
+    url(r'sign_up', views.SignUp.as_view()),
+    url(r'profile_pic', views.ProfilePicture.as_view()),
+    url(r'get_matches', views.GetMatches.as_view()),
+    url(r'get_match_profile', views.GetMatchProfile.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
