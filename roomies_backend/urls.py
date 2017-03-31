@@ -18,6 +18,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken import views as rest_framework_views
+from django.conf import settings
+from django.conf.urls.static import static
 from roomies import views
 
 urlpatterns = [
@@ -28,3 +30,7 @@ urlpatterns = [
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
