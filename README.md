@@ -1,5 +1,5 @@
 # roomies_backend
-Main backend for roomies
+A mobile app for finding like minded people to room with. This is the backend code for the REST API.
 
 ## API Endpoints
 * `get_auth_token` : Returns a token when passed a valid username and password
