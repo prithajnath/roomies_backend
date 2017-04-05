@@ -46,14 +46,13 @@ class ProfilePicture(APIView):
 class GetMatches(APIView):
     def get(self,request):
         user = request.user
-        users = User.objects.all()
+        users = user.usermatches_set.all()
         matches = {}
         for i in users:
-            if i!=user:
-                try:
-                    matches[i.get_username()] = UserProfile.objects.get(user_id=i.pk).avatar.url
-                except:
-                    matches[i.get_username()] = ""
+            try:
+                matches[str(i)] = UserProfile.objects.get(user_id=i.get_match_userid()).avatar.url
+            except:
+                matches[str(i)] = ""
         return Response(matches)
         
 class GetMatchProfile(APIView):

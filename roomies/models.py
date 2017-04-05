@@ -16,3 +16,16 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class UserProfile(models.Model):
     user   = models.OneToOneField(User)
     avatar = models.ImageField()
+    
+class UserMatches(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    match_username = models.CharField(max_length=100)
+    
+    def __repr__(self):
+        return self.match_username
+    
+    def __str__(self):
+        return self.match_username
+        
+    def get_match_userid(self):
+        return User.objects.get(username=self.match_username).pk
