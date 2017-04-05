@@ -67,7 +67,7 @@ ROOT_URLCONF = 'roomies_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['roomies/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

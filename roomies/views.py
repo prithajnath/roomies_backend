@@ -5,12 +5,17 @@ from rest_framework import status
 from .serializers import ProfileSerializer
 from django.contrib.auth.models import User
 from rest_framework.authtoken import views as rest_framework_views
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes,renderer_classes
 from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from roomies.models import UserProfile
+from django.template import loader
+from django.http import HttpResponse
 # Create your views here.
+@permission_classes((AllowAny, ))
+def index(request):
+    template = loader.get_template('index.html')
+    return HttpResponse(template.render())
 
 class ProfileStuff(APIView):
     def get(self,request):

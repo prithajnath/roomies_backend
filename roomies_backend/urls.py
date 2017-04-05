@@ -21,6 +21,7 @@ from rest_framework.authtoken import views as rest_framework_views
 from django.conf import settings
 from django.conf.urls.static import static
 from roomies import views
+from rest_framework.response import Response
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,7 +30,8 @@ urlpatterns = [
     url(r'sign_up', views.SignUp.as_view()),
     url(r'profile_pic', views.ProfilePicture.as_view()),
     url(r'get_matches', views.GetMatches.as_view()),
-    url(r'get_match_profile', views.GetMatchProfile.as_view())
+    url(r'get_match_profile', views.GetMatchProfile.as_view()),
+    url(r'^$', views.index )
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
