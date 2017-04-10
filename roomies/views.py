@@ -60,3 +60,15 @@ class GetMatchProfile(APIView):
         username = request.GET.get("username")
         user = User.objects.get(username=username)
         return Response(ProfileSerializer(user).data)
+        
+class UpdateProfile(APIView):
+    def post(self, request):
+        email = request.POST.get("email")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        user = request.user
+        user.email = email
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return Response({"success":"profile upadted"})

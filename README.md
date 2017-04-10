@@ -44,6 +44,13 @@ curl https://roomies-backend-prithajnath.c9users.io/get_match_profile?username=j
 
 ```
 
+* `update_profile` : Updates user profile (first_name, last_name, email)
+
+```
+curl --data "email=helloluke@marvel.io&first_name=Lucane&last_name=Cagebendix" https://roomies-backend-prithajnath.c9users.io/update_profile -H 'Authorization: Token 245e0226ed84b39af4c8ac5ad9231bac1291f48b'
+
+```
+
 
 ## URL 
 https://roomies-backend-prithajnath.c9users.io/
