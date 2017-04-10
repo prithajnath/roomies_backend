@@ -70,5 +70,8 @@ class UpdateProfile(APIView):
         user.email = email
         user.first_name = first_name
         user.last_name = last_name
-        user.save()
-        return Response({"success":"profile upadted"})
+        try:
+            user.save()
+            return Response({"success":"profile successfully upadted"})
+        except:
+            return Response({"error":"errors encountered"})
