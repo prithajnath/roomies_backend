@@ -19,7 +19,10 @@ def index(request):
 
 class ProfileStuff(APIView):
     def get(self,request):
-        return Response(ProfileSerializer(request.user).data)
+        profile_data = ProfileSerializer(request.user).data
+        profile = UserProfile.objects.get(user_id=request.user.pk)
+        profile_data['profile_pic'] = 'https://roomies-backend-prithajnath.c9users.io'+profile.avatar.url
+        return Response(profile_data)
 
 @permission_classes((AllowAny, ))      
 class SignUp(APIView):
@@ -37,13 +40,6 @@ class SignUp(APIView):
             idx = User.objects.get(username=user.get_username()).pk
             token = Token.objects.raw('select * from authtoken_token where user_id={}'.format(idx))[0]
             return Response({'token':token.key})
-
-class ProfilePicture(APIView):
-    def get(self,request):
-        user = request.user
-        idx = user.pk
-        profile = UserProfile.objects.get(user_id=idx)
-        return Response({'url':'https://roomies-backend-prithajnath.c9users.io'+profile.avatar.url})
         
 class GetMatches(APIView):
     def get(self,request):

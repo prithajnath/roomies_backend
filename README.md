@@ -23,13 +23,6 @@ curl --data "username=${USERNAME}&password=${PASSWORD}&email=${EMAIL}" https://r
 
 ```
 
-* `profile_pic` : Returns the URL of the associated profile picture
-
-```
-curl -X GET https://roomies-backend-prithajnath.c9users.io/profile_pic -H 'Authorization: Token 4ed1b13f2fd75122ea4cfa1b9f986231dc815f1d'
-
-```
-
 * `get_matches` : Returns a list of matches for a given user
 
 ```
