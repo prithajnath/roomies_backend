@@ -32,6 +32,8 @@ class SignUp(APIView):
             email = request.POST.get("email")
             user = User.objects.create_user(username,email,password)
             user.save()
+            profile = UserProfile.objects.create_userprofile(user)
+            profile.save()
             idx = User.objects.get(username=user.get_username()).pk
             token = Token.objects.raw('select * from authtoken_token where user_id={}'.format(idx))[0]
             return Response({'token':token.key})
