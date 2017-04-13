@@ -57,7 +57,10 @@ class GetMatchProfile(APIView):
     def get(self,request):
         username = request.GET.get("username")
         user = User.objects.get(username=username)
-        return Response(ProfileSerializer(user).data)
+        profile_data = ProfileSerializer(user).data
+        profile = UserProfile.objects.get(user_id=user.pk)
+        profile_data['profile_pic'] = profile.avatar.url
+        return Response(profile_data)
         
 class UpdateProfile(APIView):
     def post(self, request):
