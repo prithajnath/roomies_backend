@@ -59,7 +59,7 @@ class GetMatchProfile(APIView):
         user = User.objects.get(username=username)
         profile_data = ProfileSerializer(user).data
         profile = UserProfile.objects.get(user_id=user.pk)
-        profile_data['profile_pic'] = 'https://roomies-backend-prithajnath.c9users.io/'+profile.avatar.url
+        profile_data['profile_pic'] = 'https://roomies-backend-prithajnath.c9users.io'+profile.avatar.url
         return Response(profile_data)
         
 class UpdateProfile(APIView):
