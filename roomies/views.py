@@ -11,6 +11,8 @@ from rest_framework.authtoken.models import Token
 from roomies.models import UserProfile
 from django.template import loader
 from django.http import HttpResponse
+from roomies_backend.settings import BASE_DIR
+import os
 # Create your views here.
 @permission_classes((AllowAny, ))
 def index(request):
@@ -76,3 +78,12 @@ class UpdateProfile(APIView):
             return Response({"success":"profile successfully upadted"})
         except:
             return Response({"error":"errors encountered"})
+            
+# File upload endpoint
+class UploadProfilePic(APIView):
+    def post(self,request):
+        user = request.user
+        profile = UserProfile.objects.get(user_id=user.pk)
+        profile.avatar.save(os.path.join(BASE_DIR,'profile_pic'),request.FILES.get('file'))
+        return Response({"success":"Picture successfully uploaded!"})
+        
